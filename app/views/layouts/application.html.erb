@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= titre %></title>
+    <%= csrf_meta_tag %>
+    <%= render partial: 'layouts/stylesheets' %>
+  </head>
+  <body>
+    <div class="container">
+      <%= render partial: 'layouts/header' %>
+      <section class="round">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </section>
+      <%= render partial: 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
+</html>
