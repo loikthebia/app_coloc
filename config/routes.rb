@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  devise_for :users
   get 'user/new'
 
   get 'user/show'
-
-  devise_for :users
   
   root to: "pages#home"
   
