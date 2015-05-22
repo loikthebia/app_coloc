@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  devise_for :users
-  get 'user/new'
+  get 'coloc/index'
 
-  get 'user/show'
+  get 'coloc/create'
+
+  get 'coloc/new'
+
+  get 'coloc/edit'
+
+  get 'coloc/show'
+
+  get 'coloc/update'
+
+  get 'coloc/destroy'
+
+  devise_for :users
+  resources :colocs
   
   root to: "pages#home"
   
@@ -15,5 +26,7 @@ Rails.application.routes.draw do
   get 'pages/about'
 
   get 'pages/help'
+
+  get 'pages/account'
 
 end
