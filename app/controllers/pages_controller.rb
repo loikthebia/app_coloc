@@ -1,11 +1,6 @@
 class PagesController < ApplicationController
   def home
   	@titre = "Accueil"
-    @coloc = Coloc.all
-    @hash = Gmaps4rails.build_markers(@colocs) do |coloc, marker|
-      marker.lat coloc.latitude
-      marker.lng coloc.longitude
-    end
   end
 
   def contact
@@ -20,8 +15,17 @@ class PagesController < ApplicationController
   	@titre = "Aide"
   end
 
-  def account
-    @user = current_user
-    @coloc = Coloc.joins(:users).where(users: { id: @user.id })
+  def list_users
+    @users = User.all
+  end
+
+  def add_user
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      redirect_to pages_list_users_path, alert: "Vous ne pouvez pas vous ajouter vous-même"
+    else
+      @user.update(:coloc_id => current_user.coloc_id)
+      redirect_to pages_list_users_path, notice: "success"
+    end
   end
 end

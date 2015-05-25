@@ -1,19 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Adress:</strong>
-  <%= @coloc.adress %>
-</p>
+<table class="profile">
+  <tr>
+    <td class="main">
+	  <p>
+	  <strong>Adress:</strong>
+	   <%= @coloc.adress %>
+		</p>
+    
+    <p>
+    <strong>Habitants:</strong>
+     <% @users.each do |user| %>
+      <% if user.coloc_id == @coloc.id %>
+        <%= user.email %>
+      <% end %>
+    <% end %>
+    </p>
 
-<p>
-  <strong>Habitants:</strong>
-  <% @users.each do |user| %>
-  <% if user.coloc_id == @coloc.id %>
-  <%= user.email %>
-  <% end %>
-  <% end %>
-</p>
+    </td>
+    <td class="sidebar round">
 
+    </td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_coloc_path(@coloc) %> |
 <%= link_to 'Back', colocs_path %>
