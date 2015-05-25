@@ -29,6 +29,8 @@ gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -16,16 +16,45 @@
 //= require underscore
 
 function initialize() {
-  console.log('yo');
-var mapOptions = {
-center: { lat: -34.397, lng: 150.644},
-zoom: 8
-};
-var map = new google.maps.Map(document.getElementById('map-canvas'),
-mapOptions);
+  var mapOptions = {
+    center: { lat: 48.583148, lng: 7.747882},
+    zoom: 8
+  };
+
+  window.map = new google.maps.Map(
+    document.getElementById('map-canvas'),
+    mapOptions
+  );
+
+  if(window.page == 'home') {
+  var i;
+    for (i=0;window.data.length;i++) {
+    var myLatlng = new google.maps.LatLng(window.data[i].latitude,window.data[i].longitude);
+
+    var image = '/marker.png';
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: window.map,
+      icon: image
+    });
+    }
+  }
+
+    if(window.page == 'coloc') {{
+    var myLatlng = new google.maps.LatLng(window.data.latitude,window.data.longitude);
+
+    var image = '/marker.png';
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: window.map,
+      icon: image
+    });
+    }
+  }
 }
 
 $(document).on('ready', function() {
-  google.maps.event.addDomListener(window, 'load', initialize); 
+  google.maps.event.addDomListener(window, 'load', initialize);
 })
+
 
