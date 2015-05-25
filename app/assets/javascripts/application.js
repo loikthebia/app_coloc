@@ -14,32 +14,17 @@
 //= require jquery_ujs
 //= require_tree .
 //= require underscore
-//= require gmaps/google
 
-handler = Gmaps.build('Google');
-handler.buildMap({
-    provider: {
-      disableDefaultUI: true
-      // pass in other Google Maps API options here
-    },
-    internal: {
-      id: 'map'
-    }
-  },
-  function(){
-    markers = handler.addMarkers([
-      {
-        "lat": 0,
-        "lng": 0,
-        "picture": {
-          "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-          "width":  36,
-          "height": 36
-        },
-        "infowindow": "hello!"
-      }
-    ]);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  }
-);
+function initialize() {
+  console.log('yo');
+var mapOptions = {
+center: { lat: -34.397, lng: 150.644},
+zoom: 8
+};
+var map = new google.maps.Map(document.getElementById('map-canvas'),
+mapOptions);
+}
+
+$(document).on('ready', function() {
+  google.maps.event.addDomListener(window, 'load', initialize); 
+})
