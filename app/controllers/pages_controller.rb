@@ -32,4 +32,9 @@ class PagesController < ApplicationController
       redirect_to pages_list_users_path, notice: "success" and return
     end
   end
+
+  def suppr_user
+    current_user.update_attribute('coloc_id', nil)
+    redirect_to colocs_path
+  end
 end

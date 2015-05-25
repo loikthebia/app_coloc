@@ -27,7 +27,8 @@
 <div id="map-canvas" style="height: 200px"></div>
 
 <%= link_to 'Edit', edit_coloc_path(@coloc) %> |
-<%= link_to 'Back', colocs_path %>
+<%= link_to 'Back', colocs_path %> |
+<%= link_to 'Quitter cette coloc', pages_suppr_user_path %>
 
 <script type="text/javascript">
   window.data = <%= @coloc.to_json.html_safe %>;
