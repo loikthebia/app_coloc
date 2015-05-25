@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
   	@titre = "Accueil"
-    @coloc = Coloc.all
+    
   end
 
   def contact
@@ -21,6 +21,9 @@ class PagesController < ApplicationController
   end
 
   def add_user
+#    if .count = Coloc.find(current_user.coloc_id).nb_habitants.to_i
+#      redirect_to edit_coloc_path, alert: 'Vous avez déjà atteint le nombre maximum de colocataires' and return
+#    end
     @user = User.find(params[:id])
     if current_user.coloc_id == nil
       redirect_to new_coloc_path, alert: "Vous n'avez pas encore crée de coloc" and return
@@ -32,4 +35,5 @@ class PagesController < ApplicationController
       redirect_to pages_list_users_path, notice: "success" and return
     end
   end
+
 end
