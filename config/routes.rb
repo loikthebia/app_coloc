@@ -1,21 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'coloc/index'
-
-  get 'coloc/create'
-
-  get 'coloc/new'
-
-  get 'coloc/edit'
-
-  get 'coloc/show'
-
-  get 'coloc/update'
-
-  get 'coloc/destroy'
-
-  devise_for :users
   resources :colocs
+  devise_for :users
   
   root to: "pages#home"
   
@@ -27,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'pages/help'
 
-  get 'pages/account'
+  get 'pages/list_users'
+
+  get 'pages/add_user'
 
 end

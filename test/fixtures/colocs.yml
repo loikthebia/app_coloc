@@ -2,10 +2,6 @@
 
 one:
   adress: MyString
-  latitude: MyString
-  longitude: MyString
 
 two:
   adress: MyString
-  latitude: MyString
-  longitude: MyString
