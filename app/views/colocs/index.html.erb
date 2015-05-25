@@ -14,9 +14,10 @@
     <% @colocs.each do |coloc| %>
       <tr>
         <td><%= coloc.adress %></td>
-        <td><%= link_to 'Show', coloc  %></td>
+        <td><%= link_to 'Show', coloc %></td>
         <td><%= link_to 'Edit', edit_coloc_path(coloc) %></td>
-        <td><%= link_to 'Destroy', coloc_path(coloc), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Destroy', coloc_path(coloc), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
