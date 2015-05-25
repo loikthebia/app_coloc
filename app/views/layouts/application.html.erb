@@ -9,8 +9,12 @@
     <div class="container">
       <%= render partial: 'layouts/header' %>
       <section class="round">
+        <% if notice %>
         <p class="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
         <p class="alert"><%= alert %></p>
+        <% end %>
         <%= yield %>
       </section>
       <%= render partial: 'layouts/footer' %>

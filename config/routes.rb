@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   get 'pages/add_user'
 
+  get 'pages/suppr_user'
+
 end
