@@ -5,11 +5,13 @@ class ColocsController < ApplicationController
   # GET /colocs.json
   def index
     @colocs = Coloc.all
+    @users = User.all
   end
 
   # GET /colocs/1
   # GET /colocs/1.json
   def show
+    @users = User.all
     if @coloc.id != current_user.coloc_id
       redirect_to colocs_path, alert: "Unauthorized"
     end
@@ -47,6 +49,9 @@ class ColocsController < ApplicationController
   # PATCH/PUT /colocs/1
   # PATCH/PUT /colocs/1.json
   def update
+    if @coloc.users.count > coloc_params(:nb_habitants)
+      redirect_to edit_coloc_path, alert: 'Vous ne pouvez pas mettre un nombre dhabitants' and return
+    end
     respond_to do |format|
       if @coloc.update(coloc_params)
         format.html { redirect_to @coloc, notice: 'Coloc was successfully updated.' }
@@ -76,6 +81,6 @@ class ColocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coloc_params
-      params.require(:coloc).permit(:adress)
+      params.require(:coloc).permit(:adress, :titre, :superficie, :nb_habitants, :nb_chambres, :loyer)
     end
 end

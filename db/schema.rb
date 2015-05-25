@@ -11,17 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522144023) do
+ActiveRecord::Schema.define(version: 20150525141349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "colocs", force: :cascade do |t|
     t.string   "adress"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "titre"
+    t.integer  "superficie"
+    t.integer  "nb_habitants"
+    t.integer  "nb_chambres"
+    t.integer  "loyer"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,6 +41,10 @@ ActiveRecord::Schema.define(version: 20150522144023) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.integer  "coloc_id"
+    t.string   "nom"
+    t.string   "prenom"
+    t.string   "promo"
+    t.string   "telephone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
