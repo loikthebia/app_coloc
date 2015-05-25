@@ -8,18 +8,18 @@
 	   <%= @coloc.adress %>
 		</p>
     
-    <p>
-    <strong>Habitants:</strong>
-     <% @users.each do |user| %>
-      <% if user.coloc_id == @coloc.id %>
-        <%= user.email %>
-      <% end %>
-    <% end %>
-    </p>
+    
 
     </td>
     <td class="sidebar round">
-
+    <p>
+      <strong>Habitants:</strong>
+      <% @users.each do |user| %>
+        <% if user.coloc_id == @coloc.id %>
+            <li><%= user.nom %> <%= user.prenom %></li>
+          <% end %>
+        <% end %>
+        </p>
     </td>
   </tr>
 </table>
