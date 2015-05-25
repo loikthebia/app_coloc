@@ -4,3 +4,8 @@
 </p>
 
 <div id="map-canvas" style="height: 200px"></div>
+
+<script type="text/javascript">
+  window.data = <%= @coloc.to_json.html_safe %>;
+  window.page = 'home';
+</script> 
