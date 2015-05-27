@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
@@ -28,6 +28,7 @@ gem 'underscore-rails'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'rails_12factor'
 
 
 
