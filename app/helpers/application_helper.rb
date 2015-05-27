@@ -4,7 +4,7 @@ module ApplicationHelper
 	    if @titre.nil?
 	      base_titre
 	    else
-	      "#{base_titre} | #{@titre}"
+	      "#{@titre} | #{base_titre}"
 	    end
   end
 end

@@ -18,14 +18,9 @@
         <td><%= coloc.adress %></td>
         <td><%= link_to 'Show', coloc %></td>
         <td><%= link_to 'Edit', edit_coloc_path(coloc) %></td>
-<<<<<<< HEAD
         <% if current_user.coloc_id == coloc.id %>
         <td><%= link_to 'Destroy', coloc_path(coloc), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-=======
-        <td>
-          <%= link_to 'Destroy', coloc_path(coloc), method: :delete, data: { confirm: 'Are you sure?' } %></td>
->>>>>>> 4016f5a183cf0247803ff74c5212889ad57a5937
       </tr>
     <% end %>
   </tbody>
@@ -33,9 +28,9 @@
 
 <br>
 
-<% if current_user.coloc_id != nil %>
+
 <%= link_to 'New Coloc', new_coloc_path %>
-<% end%>
+
 
 <div id="map-canvas" style="height: 200px"></div>
 
