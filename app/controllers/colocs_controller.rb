@@ -68,6 +68,9 @@ class ColocsController < ApplicationController
   # DELETE /colocs/1
   # DELETE /colocs/1.json
   def destroy
+    if @coloc.id == current_user.coloc_id
+      redirect_to coloc_path, alert: "Vous ne pouvez pas supprimer une coloc dans laquelle vous n'etes pas inscrit" and return
+    end
     @coloc.destroy
     respond_to do |format|
       format.html { redirect_to colocs_url, notice: 'Coloc was successfully destroyed.' }
