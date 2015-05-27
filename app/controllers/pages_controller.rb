@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
   	@titre = "Accueil"
+    @colocs = Coloc.all
     
   end
 
