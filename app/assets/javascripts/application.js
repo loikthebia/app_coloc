@@ -32,13 +32,15 @@ function initialize() {
         var infowindow = new google.maps.InfoWindow({
       content: contentString
   });
-
+        
        var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">window.data[i].titre</h1>'+
+      '<h1 id="firstHeading" class="firstHeading">'+window.data[i].titre+'</h1>'+
       '<div id="bodyContent">'+
-      '<p>Le bon vieux bordel de chez pierrot</p>'+
+      '<p>Superficie:'+window.data[i].superficie+'<br/>'+
+      'Nombre de places libres dans la collocation:'+(window.data[i].nb_chambres-window.data[i].nb_habitants)+'<br/>'+
+      'Prix Loyer/pers:'+(window.data[i].loyer/window.data[i].nb_chambres)+'</p>'+
       '</div>'+
       '</div>';
 
@@ -67,6 +69,7 @@ function initialize() {
       map: window.map,
       icon: image
     });
+
     }
   }
 }
