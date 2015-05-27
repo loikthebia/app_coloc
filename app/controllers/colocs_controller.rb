@@ -37,9 +37,11 @@ class ColocsController < ApplicationController
 
     respond_to do |format|
       if @coloc.save && @user.update(:coloc_id => @coloc.id)
+        @coloc.update(:compteur => @coloc.compteur.to_i + 1)
         format.html { redirect_to @coloc, notice: 'Coloc was successfully created.' }
         format.json { render :show, status: :created, location: @coloc }
       else
+        @coloc.destroy
         format.html { render :new }
         format.json { render json: @coloc.errors, status: :unprocessable_entity }
       end
@@ -50,7 +52,7 @@ class ColocsController < ApplicationController
   # PATCH/PUT /colocs/1.json
   def update
     if @coloc.users.count > coloc_params[:nb_habitants].to_i
-      redirect_to edit_coloc_path, alert: 'Vous ne pouvez pas mettre un nombre dhabitants' and return
+      redirect_to edit_coloc_path, alert: "Vous ne pouvez pas mettre un nombre d'habitants inférieur au nombre de colocataires actuels" and return
     end
     respond_to do |format|
       if @coloc.update(coloc_params)
