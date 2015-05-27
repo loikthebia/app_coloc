@@ -18,7 +18,7 @@
 function initialize() {
   var mapOptions = {
     center: { lat: 48.583148, lng: 7.747882},
-    zoom: 8
+    zoom: 11
   };
 
   window.map = new google.maps.Map(
@@ -29,6 +29,22 @@ function initialize() {
   if(window.page == 'home') {
   var i;
     for (i=0;window.data.length;i++) {
+        var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+        
+       var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">'+window.data[i].titre+'</h1>'+
+      '<div id="bodyContent">'+
+      '<p>Superficie:'+window.data[i].superficie+'<br/>'+
+      'Nombre de places libres dans la collocation:'+(window.data[i].nb_chambres-window.data[i].nb_habitants)+'<br/>'+
+      'Prix Loyer/pers:'+(window.data[i].loyer/window.data[i].nb_chambres)+'</p>'+
+      '</div>'+
+      '</div>';
+
+
     var myLatlng = new google.maps.LatLng(window.data[i].latitude,window.data[i].longitude);
 
     var image = '/marker.png';
@@ -37,6 +53,10 @@ function initialize() {
       map: window.map,
       icon: image
     });
+      google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+
     }
   }
 
@@ -49,6 +69,7 @@ function initialize() {
       map: window.map,
       icon: image
     });
+
     }
   }
 }
@@ -56,5 +77,6 @@ function initialize() {
 $(document).on('ready', function() {
   google.maps.event.addDomListener(window, 'load', initialize);
 })
+
 
 
