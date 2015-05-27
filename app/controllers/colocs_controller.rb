@@ -52,7 +52,6 @@ class ColocsController < ApplicationController
   # PATCH/PUT /colocs/1.json
   def update
     if @coloc.users.count > coloc_params[:nb_habitants].to_i
-      redirect_to edit_coloc_path, alert: 'Vous ne pouvez pas mettre un nombre dhabitants' and return
       redirect_to edit_coloc_path, alert: "Vous ne pouvez pas mettre un nombre d'habitants inférieur au nombre de colocataires actuels" and return
     end
     respond_to do |format|
@@ -69,9 +68,6 @@ class ColocsController < ApplicationController
   # DELETE /colocs/1
   # DELETE /colocs/1.json
   def destroy
-    if @coloc.id == current_user.coloc_id
-      redirect_to coloc_path, alert: "Vous ne pouvez pas supprimer une coloc dans laquelle vous n'etes pas inscrit" and return
-    end
     @coloc.destroy
     respond_to do |format|
       format.html { redirect_to colocs_url, notice: 'Coloc was successfully destroyed.' }
